@@ -8,11 +8,15 @@
     <title>Document</title>
 </head>
 <body>
+    <div>Two State</div>
     <input type="checkbox" class="jtoggler">
     <input type="checkbox" checked class="jtoggler">
     <input type="checkbox" disabled class="jtoggler">
     <input type="checkbox" checked disabled class="jtoggler">
-    <input type="checkbox" class="jtoggler" data-label="Is Toggler">
+    <input type="checkbox" class="jtoggler" data-jtlabel="Is Toggler">
+    <div>Three State</div>
+    <input type="checkbox" class="jtoggler" data-jtmulti-state>
+    <input type="checkbox" class="jtoggler" disabled data-jtmulti-state>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="jtoggler.js"></script>
     <script>
@@ -20,7 +24,12 @@
             $('.jtoggler').jtoggler();
             $(document).on('jt:toggled', function(event, target) {
                 console.log(event, target);
-            })
+                console.info($(target).prop('checked'))
+            });
+            $(document).on('jt:toggled:multi', function (event, target) {
+                console.log(event, target);
+                console.info($(target).parent().index())
+            });
         });
     </script>
 </body>

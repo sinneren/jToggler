@@ -57,3 +57,40 @@
 .jtoggler-label {
     padding-left: 0.4em;
 }
+.jtoggler-radio {
+    display: none;
+}
+.jtoggler-btn-wrapper {
+    display: flex;
+    width: 33.33%;
+}
+.jtoggler-btn-wrapper:hover {
+    cursor: pointer;
+}
+.jtoggler-wrapper-multistate .jtoggler-control {
+    display: flex;
+    width: 4em;
+}
+.jtoggler-wrapper-multistate .jtoggler-handle {
+    height: 1.7em;
+    top: calc(50% - 0.85em);
+}
+.jtoggler-wrapper-multistate .jtoggler-control.is-fully-active {
+    background: #4a89dc;
+}
+.jtoggler-wrapper-multistate .jtoggler:disabled + .jtoggler-control:hover .jtoggler-btn-wrapper {
+    cursor: default;
+}
+
+.jtoggler-btn-wrapper:nth-child(1).is-active ~ .jtoggler-handle {
+    left: -0.1em;
+}
+.jtoggler-btn-wrapper:nth-child(2).is-active ~ .jtoggler-handle {
+    left: 1.3em;
+
+    background: #4a89dc;
+}
+.jtoggler-btn-wrapper:nth-child(3).is-active ~ .jtoggler-handle {
+    left: 2.6em;
+}
+
