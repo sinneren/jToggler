@@ -14,18 +14,15 @@
 .jtoggler-wrapper {
     display: inline-flex;
     align-items: center;
-
-    font-size: 1em;
 }
 .jtoggler-control {
     position: relative;
 
-    width: 3em;
-    height: 1.5em;
-    margin: 0.2em;
+    width: 70px;
+    height: 30px;
 
     background: #fff;
-    border-radius: 2em;
+    border-radius: 30px;
     box-shadow: inset 0 0 1px rgba(0,0,0,0.25);
 
     transition: background-color 0.3s;
@@ -37,10 +34,10 @@
     display: block;
     position: absolute;
 
-    width: 1.6em;
-    height: 1.6em;
-    top: calc(50% - 0.8em);
-    left: -0.1em;
+    width: 28px;
+    height: 28px;
+    top: calc(50% - 14px);
+    left: 0;
 
     background: #fff;
     border-radius: 50%;
@@ -52,10 +49,10 @@
     background: #4a89dc;
 }
 .jtoggler:checked + .jtoggler-control .jtoggler-handle {
-    left: 1.6em;
+    left: 42px;
 }
 .jtoggler-label {
-    padding-left: 0.4em;
+    padding-left: 5px;
 }
 .jtoggler-radio {
     display: none;
@@ -69,7 +66,7 @@
 }
 .jtoggler-wrapper-multistate .jtoggler-control {
     display: flex;
-    width: 4em;
+    width: 90px;
 }
 .jtoggler-wrapper-multistate .jtoggler-control.is-fully-active {
     background: #4a89dc;
@@ -78,14 +75,14 @@
     cursor: default;
 }
 .jtoggler-btn-wrapper:nth-child(1).is-active ~ .jtoggler-handle {
-    left: -0.1em;
+    left: 0;
 }
 .jtoggler-btn-wrapper:nth-child(2).is-active ~ .jtoggler-handle {
-    left: 1.3em;
+    left: 30px;
 
     background: #4a89dc;
 }
 .jtoggler-btn-wrapper:nth-child(3).is-active ~ .jtoggler-handle {
-    left: 2.6em;
+    left: 62px;
 }
 
