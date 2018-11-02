@@ -5,7 +5,7 @@
 .jtoggler:checked:disabled + .jtoggler-control {
     background-color: rgba(0,0,0,0.05);
 }
-.jtoggler:disabled + .jtoggler-control:before {
+.jtoggler:disabled + .jtoggler-control .jtoggler-handle {
     background-color: #ccc;
 }
 .jtoggler:disabled + .jtoggler-control:hover {
@@ -32,8 +32,7 @@
 .jtoggler-control:hover {
     cursor: pointer;
 }
-.jtoggler-control:before {
-    content: '';
+.jtoggler-control .jtoggler-handle {
     display: block;
     position: absolute;
 
@@ -51,6 +50,6 @@
 .jtoggler:checked + .jtoggler-control {
     background: #4a89dc;
 }
-.jtoggler:checked + .jtoggler-control:before {
+.jtoggler:checked + .jtoggler-control .jtoggler-handle {
     left: 1.6em;
 }
