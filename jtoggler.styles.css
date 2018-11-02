@@ -1,0 +1,56 @@
+.jtoggler {
+    display: none;
+}
+.jtoggler:disabled + .jtoggler-control,
+.jtoggler:checked:disabled + .jtoggler-control {
+    background-color: rgba(0,0,0,0.05);
+}
+.jtoggler:disabled + .jtoggler-control:before {
+    background-color: #ccc;
+}
+.jtoggler:disabled + .jtoggler-control:hover {
+    cursor: default;
+}
+.jtoggler-wrapper {
+    display: inline-block;
+
+    font-size: 1em;
+}
+.jtoggler-control {
+    position: relative;
+
+    width: 3em;
+    height: 1.5em;
+    margin: 0.2em;
+
+    background: #fff;
+    border-radius: 2em;
+    box-shadow: inset 0 0 1px rgba(0,0,0,0.25);
+
+    transition: background-color 0.3s;
+}
+.jtoggler-control:hover {
+    cursor: pointer;
+}
+.jtoggler-control:before {
+    content: '';
+    display: block;
+    position: absolute;
+
+    width: 1.6em;
+    height: 1.6em;
+    top: calc(50% - 0.8em);
+    left: -0.1em;
+
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+
+    transition: left 0.3s;
+}
+.jtoggler:checked + .jtoggler-control {
+    background: #4a89dc;
+}
+.jtoggler:checked + .jtoggler-control:before {
+    left: 1.6em;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="jtoggler.styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" class="jtoggler">
+    <input type="checkbox" checked class="jtoggler">
+    <input type="checkbox" disabled class="jtoggler">
+    <input type="checkbox" checked disabled class="jtoggler">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="jtoggler.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('.jtoggler').jtoggler();
+        });
+    </script>
+</body>
+</html>
