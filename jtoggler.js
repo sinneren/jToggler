@@ -4,7 +4,7 @@
 
         var pluginName = "jtoggler",
             defaults = {
-                className: ""
+                className: "",
             };
 
         function Toggler ( element, options ) {
@@ -13,26 +13,45 @@
             this.settings = $.extend( {}, defaults, options );
             this._defaults = defaults;
             this._name = pluginName;
+
             this.init();
+            this.events();
         }
 
         $.extend( Toggler.prototype, {
             init: function() {
                 this.generateHTML();
             },
+            events: function() {
+                var $element = $(this.element);
+
+                $element.on('change', this, function (event) {
+                    $(document).trigger('jt:toggled', [event.target]);
+                })
+            },
             generateHTML: function() {
                 var $element = $(this.element);
+
                 var $wrapper = $('<label />', {
-                    class: $.trim("jtoggler-wrapper " + defaults.className),
+                    class: $.trim("jtoggler-wrapper " + this._defaults.className),
                 });
                 var $control = $('<div />', {
-                    class: 'jtoggler-control'
+                    class: 'jtoggler-control',
                 });
                 var $handle = $('<div />', {
-                    class: 'jtoggler-handle'
+                    class: 'jtoggler-handle',
                 });
-                $control.append($handle);
+
+                $control.prepend($handle);
                 $element.wrap($wrapper).after($control);
+                if ($element.data('label')) {
+                    var $label = $('<div />', {
+                        class: 'jtoggler-label',
+                        text: $element.data('label'),
+                    });
+                    $control.after($label);
+                }
+
             },
 
         } );

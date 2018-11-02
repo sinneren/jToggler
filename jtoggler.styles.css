@@ -12,7 +12,8 @@
     cursor: default;
 }
 .jtoggler-wrapper {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
 
     font-size: 1em;
 }
@@ -52,4 +53,7 @@
 }
 .jtoggler:checked + .jtoggler-control .jtoggler-handle {
     left: 1.6em;
+}
+.jtoggler-label {
+    padding-left: 0.4em;
 }

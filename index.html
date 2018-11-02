@@ -12,11 +12,15 @@
     <input type="checkbox" checked class="jtoggler">
     <input type="checkbox" disabled class="jtoggler">
     <input type="checkbox" checked disabled class="jtoggler">
+    <input type="checkbox" class="jtoggler" data-label="Is Toggler">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="jtoggler.js"></script>
     <script>
         $(document).ready(() => {
             $('.jtoggler').jtoggler();
+            $(document).on('jt:toggled', function(event, target) {
+                console.log(event, target);
+            })
         });
     </script>
 </body>
