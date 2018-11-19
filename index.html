@@ -13,7 +13,7 @@
     <input type="checkbox" checked class="jtoggler">
     <input type="checkbox" disabled class="jtoggler">
     <input type="checkbox" checked disabled class="jtoggler">
-    <input type="checkbox" class="jtoggler" data-jtlabel="Is Toggler">
+    <input type="checkbox" class="jtoggler" data-jtlabel="Toggler Off" data-jtlabel-success="Toggler On">
     <div>Three State</div>
     <input type="checkbox" class="jtoggler" data-jtmulti-state>
     <input type="checkbox" class="jtoggler" disabled data-jtmulti-state>
@@ -24,8 +24,8 @@
         $(document).ready(() => {
             $('.jtoggler').jtoggler();
             $(document).on('jt:toggled', function(event, target) {
-                console.log(event, target);
-                console.info($(target).prop('checked'))
+                // console.log(event, target);
+                // console.info($(target).prop('checked'))
             });
             $(document).on('jt:toggled:multi', function (event, target) {
                 console.log(event, target);

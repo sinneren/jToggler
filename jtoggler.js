@@ -30,10 +30,23 @@
             },
             events: function() {
                 var $element = $(this.element);
+                var instance = this;
 
                 $element.on('change', this, function (event) {
+                    if ($element.data('jtlabel')) {
+                        if ($element.data('jtlabel-success')) {
+                            if ($element.prop('checked')) {
+                                $element.next().next().text($element.data('jtlabel-success'));
+                            } else {
+                                $element.next().next().text($element.data('jtlabel'));
+                            }
+                        } else {
+                            instance.setWarningLabelMessage();
+                        }
+                    }
+
                     $(document).trigger('jt:toggled', [event.target]);
-                })
+                });
 
                 if (!$element.prop('disabled')) {
                     var $control = $element.next('.jtoggler-control');
@@ -76,10 +89,22 @@
                 $element.wrap($wrapper).after($control);
 
                 if ($element.data('jtlabel')) {
+
                     var $label = $('<div />', {
                         class: 'jtoggler-label',
-                        text: $element.data('jtlabel'),
                     });
+
+                    if ($element.prop('checked')) {
+                        if ($element.data('jtlabel-success')) {
+                            $label.text($element.data('jtlabel-success'));
+                        } else {
+                            this.setWarningLabelMessage();
+                            $label.text($element.data('jtlabel'));
+                        }
+                    } else {
+                        $label.text($element.data('jtlabel'));
+                    }
+
                     $control.after($label);
                 }
 
@@ -113,6 +138,9 @@
                 $element.wrap($wrapper).after($control);
                 $control.find('.jtoggler-btn-wrapper:first').addClass('is-active');
 
+            },
+            setWarningLabelMessage: function() {
+                console.warn('Data attribute "jtlabel-success" is not set');
             },
         } );
 
