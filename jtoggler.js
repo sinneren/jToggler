@@ -75,73 +75,79 @@
             generateTwoStateHTML: function() {
                 var $element = $(this.element);
 
-                var $wrapper = $('<label />', {
-                    class: $.trim("jtoggler-wrapper " + this._defaults.className),
-                });
-                var $control = $('<div />', {
-                    class: 'jtoggler-control',
-                });
-                var $handle = $('<div />', {
-                    class: 'jtoggler-handle',
-                });
-
-                $control.prepend($handle);
-                $element.wrap($wrapper).after($control);
-
-                if ($element.data('jtlabel')) {
-
-                    var $label = $('<div />', {
-                        class: 'jtoggler-label',
+                if (!$element.hasClass('jqtoggler-inited')) {
+                    $element.addClass('jqtoggler-inited');
+                    var $wrapper = $('<label />', {
+                        class: $.trim("jtoggler-wrapper " + this._defaults.className),
+                    });
+                    var $control = $('<div />', {
+                        class: 'jtoggler-control',
+                    });
+                    var $handle = $('<div />', {
+                        class: 'jtoggler-handle',
                     });
 
-                    if ($element.prop('checked')) {
-                        if ($element.data('jtlabel-success')) {
-                            $label.text($element.data('jtlabel-success'));
+                    $control.prepend($handle);
+                    $element.wrap($wrapper).after($control);
+
+                    if ($element.data('jtlabel')) {
+
+                        var $label = $('<div />', {
+                            class: 'jtoggler-label',
+                        });
+
+                        if ($element.prop('checked')) {
+                            if ($element.data('jtlabel-success')) {
+                                $label.text($element.data('jtlabel-success'));
+                            } else {
+                                this.setWarningLabelMessage();
+                                $label.text($element.data('jtlabel'));
+                            }
                         } else {
-                            this.setWarningLabelMessage();
                             $label.text($element.data('jtlabel'));
                         }
-                    } else {
-                        $label.text($element.data('jtlabel'));
+
+                        $control.after($label);
                     }
-
-                    $control.after($label);
                 }
-
             },
             generateThreeStateHTML: function() {
                 var $element = $(this.element);
 
-                var $wrapper = $('<div />', {
-                    class: $.trim("jtoggler-wrapper jtoggler-wrapper-multistate " + this._defaults.className),
-                });
-                var $control = $('<div />', {
-                    class: 'jtoggler-control',
-                });
-                var $handle = $('<div />', {
-                    class: 'jtoggler-handle',
-                });
-                for (var i = 0; i < 3; i++) {
-                    var $label = $('<label />', {
-                        class: 'jtoggler-btn-wrapper',
+                if (!$element.hasClass('jqtoggler-inited')) {
+                    $element.addClass('jqtoggler-inited');
+                    var $wrapper = $('<div />', {
+                        class: $.trim("jtoggler-wrapper jtoggler-wrapper-multistate " + this._defaults.className),
                     });
-                    var $btn = $('<input />', {
-                        type: 'radio',
-                        name: 'options',
-                        class: 'jtoggler-radio',
+                    var $control = $('<div />', {
+                        class: 'jtoggler-control',
                     });
+                    var $handle = $('<div />', {
+                        class: 'jtoggler-handle',
+                    });
+                    for (var i = 0; i < 3; i++) {
+                        var $label = $('<label />', {
+                            class: 'jtoggler-btn-wrapper',
+                        });
+                        var $btn = $('<input />', {
+                            type: 'radio',
+                            name: 'options',
+                            class: 'jtoggler-radio',
+                        });
 
-                    $label.append($btn);
-                    $control.prepend($label);
+                        $label.append($btn);
+                        $control.prepend($label);
+                    }
+                    $control.append($handle);
+                    $element.wrap($wrapper).after($control);
+                    $control.find('.jtoggler-btn-wrapper:first').addClass('is-active');
                 }
-                $control.append($handle);
-                $element.wrap($wrapper).after($control);
-                $control.find('.jtoggler-btn-wrapper:first').addClass('is-active');
 
             },
             setWarningLabelMessage: function() {
                 console.warn('Data attribute "jtlabel-success" is not set');
             },
+
         } );
 
         $.fn[ pluginName ] = function( options ) {
